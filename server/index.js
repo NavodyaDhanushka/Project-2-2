@@ -60,6 +60,7 @@ app.get("/logout", (req, res) => {
   });
 });
 
+//bbb
 app.get("/crud", async (req, res) => {
   //console.log(req.user);
   if (req.isAuthenticated()) {
