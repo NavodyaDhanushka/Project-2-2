@@ -115,7 +115,7 @@ app.get("/updatecrud/:id", async (req, res) => {
       );
       const hour = result.rows[0];
       if (hour) {
-        res.render("update.ejs", { hour: hour });
+        res.render("update.ejs", { hour: hour });//ejs >> index
       } else {
         res.send("Record not found.");
       }
@@ -179,14 +179,14 @@ app.post(
 );
 
 app.post("/crudsubmit", async function (req, res) {
-  const hours = req.body.hours;
+  const hours = req.body.hours;//ejs >> index
   const place = req.body.place;
   //console.log(req.user);
   try {
     await db.query(
       `INSERT INTO hours (uid, hours, place) VALUES ($1, $2, $3)`,
       [req.user.id, hours, place]
-    );
+    );//index >> db
 
     res.redirect("/crud");
   } catch (err) {
